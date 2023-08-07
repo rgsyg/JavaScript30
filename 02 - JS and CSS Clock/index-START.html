@@ -51,6 +51,7 @@
         transform: translateY(
           -3px
         ); /* account for the height of the clock hands */
+        transform: rotate(90deg);
       }
 
       .hand {
@@ -59,10 +60,9 @@
         background: black;
         position: absolute;
         top: 50%;
-        transform: rotate(90deg);
         transform-origin: 100%;
-        /* transition: all 0.7s; */
-        transition-timing-function: cubic-bezier(0, 1.35, 0.38, -0.04);
+        transition: all 0.7s;
+        transition-timing-function: cubic-bezier(0, 0.82, 0.33, 1.01);
       }
 
       .second-hand {
@@ -84,19 +84,25 @@
       const minuteHand = document.querySelector(".min-hand");
       const hourHand = document.querySelector(".hour-hand");
 
+      const hands = document.querySelectorAll(".hand");
+
       function setDate() {
         const dateNow = new Date();
         const seconds = dateNow.getSeconds();
         const minutes = dateNow.getMinutes();
         const hours = dateNow.getHours();
 
-        const secondsDegrees = (seconds / 60) * 360 + 90;
-        const minutesDegrees = (minutes / 60) * 360 + 90;
-        const hoursDegrees = (hours / 12) * 360 + 90;
+        const secondsDegrees = (seconds / 60) * 360;
+        const minutesDegrees = (minutes / 60) * 360;
+        const hoursDegrees = (hours / 12) * 360;
 
         secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
         minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
         hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+
+        hands.forEach(
+          (hand) => (hand.style.transition = seconds === 0 ? "none" : null)
+        );
       }
 
       setInterval(setDate, 1000);
