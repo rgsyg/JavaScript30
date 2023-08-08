@@ -143,8 +143,10 @@
     <script>
       const panels = document.querySelectorAll(".panel");
 
-      function togglePanel() {
-        this.classList.toggle("open");
+      function togglePanel(e) {
+        if (e.detail < 2) {
+          this.classList.toggle("open");
+        }
       }
 
       function toggleTransition(e) {
