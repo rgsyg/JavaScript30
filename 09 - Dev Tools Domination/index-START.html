@@ -1,47 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Console Tricks!</title>
-  <link rel="icon" href="https://fav.farm/🔥" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Console Tricks!</title>
+    <link rel="icon" href="https://fav.farm/🔥" />
+  </head>
+  <body>
+    <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
-  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+    <script>
+      const p = document.querySelector("p");
 
-  <script>
-    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+      const dogs = [
+        { name: "Snickers", age: 2 },
+        { name: "hugo", age: 8 },
+      ];
 
-    function makeGreen() {
-      const p = document.querySelector('p');
-      p.style.color = '#BADA55';
-      p.style.fontSize = '50px';
-    }
+      function makeGreen() {
+        const p = document.querySelector("p");
+        p.style.color = "#BADA55";
+        p.style.fontSize = "50px";
+      }
 
-    // Regular
+      // Regular
+      console.log("hello");
 
-    // Interpolated
+      // Interpolated
+      console.log("hello %s", "world");
 
-    // Styled
+      // Styled
+      console.log("%chello world", "color: purple; font-size: 24px");
 
-    // warning!
+      // warning!
+      console.warn("this is a warning.");
 
-    // Error :|
+      // Error :|
+      console.error("this is an error!!");
 
-    // Info
+      // Info
+      console.info("for your information...");
 
-    // Testing
+      // Testing
+      console.assert(1 === 2, "this is wrong!");
 
-    // clearing
+      // clearing
+      console.clear();
 
-    // Viewing DOM Elements
+      // Viewing DOM Elements
+      console.log(p);
+      console.dir(p);
 
-    // Grouping together
+      // Grouping together
+      dogs.forEach((dog) => {
+        console.groupCollapsed(dog.name);
+        console.log(`Dog name: ${dog.name}`);
+        console.log(`Dog age: ${dog.age}`);
+        console.log(`Dog age in human years: ${dog.age * 7}`);
+        console.groupEnd(dog.name);
+      });
 
-    // counting
+      // counting
+      console.count("wes");
+      console.count("wes");
+      console.count("john");
+      console.count("john");
+      console.count("john");
+      console.count("john");
+      console.count("wes");
+      console.count("wes");
 
-    // timing
+      // timing
+      console.time("fetching data");
 
-  </script>
-</body>
+      fetch(
+        "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json"
+      )
+        .then((blob) => blob.json())
+        .then((data) => {
+          console.timeEnd("fetching data");
+          console.log(data);
+        });
+    </script>
+  </body>
 </html>
