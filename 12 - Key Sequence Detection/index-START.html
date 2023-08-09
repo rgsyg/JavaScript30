@@ -22,10 +22,9 @@
 
       function activateCheat(e) {
         keysArray.push(e.key);
-        keysArray.splice(
-          -secretCode.length - 1,
-          keysArray.length - secretCode.length
-        );
+        if (keysArray.length > secretCode.length) {
+          keysArray.shift();
+        }
         if (keysArray.join("").includes(secretCode.join(""))) {
           cornify_add();
         }
