@@ -9,7 +9,16 @@
   <body>
     <script>
       const keysArray = [];
-      const secretCode = "cheat";
+      const secretCode = [
+        "ArrowUp",
+        "ArrowUp",
+        "ArrowDown",
+        "ArrowDown",
+        "ArrowLeft",
+        "ArrowRight",
+        "ArrowLeft",
+        "ArrowRight",
+      ];
 
       function activateCheat(e) {
         keysArray.push(e.key);
@@ -17,7 +26,7 @@
           -secretCode.length - 1,
           keysArray.length - secretCode.length
         );
-        if (keysArray.join("").includes(secretCode)) {
+        if (keysArray.join("").includes(secretCode.join(""))) {
           cornify_add();
         }
       }
