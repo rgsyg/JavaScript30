@@ -7,6 +7,22 @@
     <link rel="icon" href="https://fav.farm/🔥" />
   </head>
   <body>
-    <script></script>
+    <script>
+      const keysArray = [];
+      const secretCode = "cheat";
+
+      function activateCheat(e) {
+        keysArray.push(e.key);
+        keysArray.splice(
+          -secretCode.length - 1,
+          keysArray.length - secretCode.length
+        );
+        if (keysArray.join("").includes(secretCode)) {
+          cornify_add();
+        }
+      }
+
+      window.addEventListener("keyup", activateCheat);
+    </script>
   </body>
 </html>
