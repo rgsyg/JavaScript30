@@ -38,15 +38,15 @@
     <script>
       const container = document.querySelector(".items");
 
-      let startX;
-      let scrollLeft;
+      // let startX;
+      // let scrollLeft;
       let isDown = false;
 
       container.addEventListener("mousedown", (e) => {
         isDown = true;
         container.classList.add("active");
-        startX = e.pageX - container.offsetLeft;
-        scrollLeft = container.scrollLeft;
+        // startX = e.pageX - container.offsetLeft;
+        // scrollLeft = container.scrollLeft;
       });
 
       container.addEventListener("mouseup", () => {
@@ -62,11 +62,11 @@
       container.addEventListener("mousemove", (e) => {
         if (!isDown) return;
         e.preventDefault();
-        const x = e.pageX - container.offsetLeft;
-        const walk = (x - startX) * 2;
-        container.scrollLeft = scrollLeft - walk;
-        console.log(`scrollLeft: ${scrollLeft}
-        container.scrollLeft: ${container.scrollLeft}`);
+        // const x = e.pageX - container.offsetLeft;
+        // const walk = (x - startX) * 2;
+        container.scrollLeft -= e.movementX;
+        // console.log(`scrollLeft: ${scrollLeft}
+        // container.scrollLeft: ${container.scrollLeft}`);
       });
     </script>
   </body>
